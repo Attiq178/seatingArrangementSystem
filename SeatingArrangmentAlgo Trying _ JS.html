@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Arrays</h2>
+
+<p id="demo"></p>
+
+    <script>
+        document.write("Hello World<br>");document.write("<br>");
+        var A = new Array();
+        A[0] = ["A","A","A","A"]; 
+        A[1] = ["B","B","B","B"];
+        A[2]=["C","C"];//,"C","C","C","C"];
+        A[3]=["D","D"];//,"D","D","D","D","D"];
+        //A[4]=["F","F","F"];
+        document.write(A + " <br>Size: " + A.length + "<br><br><br>");
+        var NArray = new Array();
+        i = 0;
+        leng = len = A.length;
+        //document.write("Length of A: " + A.length + "<br>");
+        while(leng > 1){
+            for(j = 0; j < len; j++){
+                if(A[j].length > 0 && NArray[i-10] != A[j][0] && (NArray[i-1]!=A[j][0] || i%10==0)){
+                    //document.write(A[j]+" is poped when j="+j+" ");
+                    NArray.push(A[j].shift());
+                    i++;
+                    //if(NArray[i-1]!=A[j][0]
+                }
+            }
+            document.write(A);  //Diplaying the remaining array
+            document.write("<br>i: "+i+"<br>");
+            document.write("<br>New Array: "+NArray);
+
+            //calculating total length after every main iteration: after taking from each of the sub array element.
+            var b = 0;
+            for(a = 0; a < len; a++){
+                if (A[a].length == 0) continue;
+                b++;
+            }
+            document.write(" Length is now: "+ b + "<br>");
+            leng = b;
+        }
+
+        //displaying the resulting array
+        var c = 1;
+        for(n=0; n < NArray.length; n++){
+            if((n+1)%10 == 1){
+                document.write("<br>Column#"+c+" : ");
+                c++;
+            }
+            document.write(NArray[n]+"-");
+        }
+    </script>
+
+</body>
+</html>
