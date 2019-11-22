@@ -8,6 +8,8 @@
 
     <script>
         document.write("Hello World<br>");document.write("<br>");
+        check = false;
+        // document.write(check);
         var A = new Array();
         A[0] = ["A","A","A","A"]; 
         A[1] = ["B","B","B","B"];
@@ -25,6 +27,18 @@
                     //document.write(A[j]+" is poped when j="+j+" ");
                     NArray.push(A[j].shift());
                     i++;
+                    //if(NArray[i-1]!=A[j][0]
+                    if(check == true)
+                    {
+                        document.write("<br>"+a+"<br>");
+                        check = false;
+                        NArray.push(a.shift());
+                        i++;
+                    }
+                }
+                else{
+                    check = true;
+                    a = A[j];
                 }
             }
             document.write(A);  //Diplaying the remaining array
