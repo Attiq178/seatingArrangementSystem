@@ -1,4 +1,4 @@
 # seatingArrangementSystem
 Starting project on Seating Arrangement System.
-The algorith uden process.
+The algorithm under process.
 We are working on it.
