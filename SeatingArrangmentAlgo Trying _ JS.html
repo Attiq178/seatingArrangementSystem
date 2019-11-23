@@ -1,70 +1,75 @@
 <!DOCTYPE html>
 <html>
+
 <body>
-
-<h2>JavaScript Arrays</h2>
-
-<p id="demo"></p>
-
     <script>
-        document.write("Hello World<br>");document.write("<br>");
-        check = false;
-        // document.write(check);
-        var A = new Array();
-        A[0] = ["A","A","A","A"]; 
-        A[1] = ["B","B","B","B"];
-        A[2]=["C","C"];//,"C","C","C","C"];
-        A[3]=["D","D"];//,"D","D","D","D","D"];
-        //A[4]=["F","F","F"];
-        document.write(A + " <br>Size: " + A.length + "<br><br><br>");
+        var A = new Array();    //New Array
+        //input in the form of different sections
+        A[0] = ["A", "A", "A", "A"];
+        A[1] = ["B", "B", "B", "B"];
+        A[2] = ["C", "C", "C", "C", "C", "C"];
+        A[3] = ["D", "D", "D", "D", "D", "D", "D"];
+        A[4] = ["F", "F", "F"];
+        document.write("Input Array: " + A + "<br>Number of Sections: " + A.length + "<br>");
         var NArray = new Array();
         i = 0;
+        std = 0;
+        for (s = 0; s < A.length; s++) {
+            std += A[s].length;
+            document.write("Students of section " + A[s][0] + " = " + A[s].length + "<br>");
+        }
+        document.write("Total Number of studetns: " + std + "<br><br><br>");
+
+        //algorithm starting almost
         leng = len = A.length;
-        //document.write("Length of A: " + A.length + "<br>");
-        while(leng > 1){
-            for(j = 0; j < len; j++){
-                if(A[j].length > 0 && NArray[i-10] != A[j][0] && (NArray[i-1]!=A[j][0] || i%10==0)){
-                    //document.write(A[j]+" is poped when j="+j+" ");
+        flag = true; spc = false;
+        while (leng > 0 && flag == true) {
+            flag = false;
+            //popping from input array and pushing in output array according to the condition
+            for (j = 0; j < len; j++) {
+                //if(i%10==0 && i > 9) {j = Math.floor(std/2);}
+                if (A[j].length > 0 && NArray[i - 10] != A[j][0] && (NArray[i - 1] != A[j][0] || i % 10 == 0)) {
                     NArray.push(A[j].shift());
                     i++;
-                    //if(NArray[i-1]!=A[j][0]
-                    if(check == true)
-                    {
-                        document.write("<br>"+a+"<br>");
-                        check = false;
-                        NArray.push(a.shift());
-                        i++;
-                    }
-                }
-                else{
-                    check = true;
-                    a = A[j];
+                    flag = true;
                 }
             }
-            document.write(A);  //Diplaying the remaining array
-            document.write("<br>i: "+i+"<br>");
-            document.write("<br>New Array: "+NArray);
+            document.write("Array left: " + A + "<br>");  //Diplaying the remaining array
+            document.write("i: " + i + "<br>");
+            document.write("Output Array: " + NArray + "<br>");
 
             //calculating total length after every main iteration: after taking from each of the sub array element.
             var b = 0;
-            for(a = 0; a < len; a++){
+            for (a = 0; a < len; a++) {
                 if (A[a].length == 0) continue;
                 b++;
             }
-            document.write(" Length is now: "+ b + "<br>");
-            leng = b;
+            document.write("Number of sections: " + b + "<br><br>");
+            leng = b;//updating the new length of array: number of sections left
+
+            if (flag == false) {
+                flag = spc = true;
+                NArray.push("X");
+                i++;
+            }
+        }//end the main while (outer) loop
+
+        document.write("Number of seats allocated: " + i + "<br>");
+        if (flag == false) {
+            document.write("Student are left = " + (std - i) + "<br>");
         }
 
         //displaying the resulting array
         var c = 1;
-        for(n=0; n < NArray.length; n++){
-            if((n+1)%10 == 1){
-                document.write("<br>Column#"+c+" : ");
+        for (n = 0; n < NArray.length; n++) {
+            if ((n + 1) % 10 == 1) {
+                document.write("<br>Column#" + c + " : ");
                 c++;
             }
-            document.write(NArray[n]+"-");
+            document.write(NArray[n] + "-");
         }
     </script>
 
 </body>
+
 </html>
