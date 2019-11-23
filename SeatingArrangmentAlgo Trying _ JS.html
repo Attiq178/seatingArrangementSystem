@@ -23,7 +23,7 @@
         //algorithm starting almost
         leng = len = A.length;
         flag = true; spc = false;
-        while (leng > 0 && flag == true) {
+        while (leng > 0) {
             flag = false;
             //popping from input array and pushing in output array according to the condition
             for (j = 0; j < len; j++) {
@@ -39,21 +39,32 @@
             document.write("Output Array: " + NArray + "<br>");
 
             //calculating total length after every main iteration: after taking from each of the sub array element.
-            var b = 0;
+            var count = 0;
             for (a = 0; a < len; a++) {
                 if (A[a].length == 0) continue;
-                b++;
+                count++;
             }
-            document.write("Number of sections: " + b + "<br><br>");
-            leng = b;//updating the new length of array: number of sections left
+            document.write("Number of sections: " + count + "<br><br>");
+            leng = count;//updating the new length of array: number of sections left
 
             if (flag == false) {
-                flag = spc = true;
-                NArray.push("X");
-                i++;
+                //ask to the user how to allot the seats
+                finish = 2  //if 1 then allot them as it is, if 2 allot them with spaces
+                if (finish == 1) {
+                    for (r = 0; r < len; r++) {
+                        while (A[r].length > 0)
+                            NArray.push(A[r].shift());
+                    }
+                }
+                else if (finish == 2) {
+                    flag = spc = true;
+                    NArray.push("X");   //X is Supposed to be space
+                    i++;
+                }
             }
         }//end the main while (outer) loop
 
+        //Displaying the results
         document.write("Number of seats allocated: " + i + "<br>");
         if (flag == false) {
             document.write("Student are left = " + (std - i) + "<br>");
@@ -66,7 +77,7 @@
                 document.write("<br>Column#" + c + " : ");
                 c++;
             }
-            document.write(NArray[n] + "-");
+            document.write(NArray[n] + "--");
         }
     </script>
 
