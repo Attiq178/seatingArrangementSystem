@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <div>
+        <form class="form-horizontal well">
+            <legend>
+                <h3>
+                    <div id="title">Seating Arragement System</div>
+                </h3>
+            </legend>
+            <fieldset>
+                <label for="csvFileInput"> <strong>CSV File:</strong>
+                </label>
+                <input type="file" id="csvFileInput" onchange="handleFiles(this.files)" accept=".csv">
+            </fieldset>
+        </form>
+    </div>
+    <div id="inputDisplay">
+    </div>
+    <br>
+    <br>
+    <footer>
+        <center>
+            <p>&copy; UET, Lahore 2019</p>
+        </center>
+    </footer>
+
+
+    <script>
+        //rading data from file
+        function handleFiles(files) {
+            // Check for the various File API support.
+            if (window.FileReader) {
+                // FileReader are supported.
+                getAsText(files[0]);
+            } else {
+                alert('FileReader are not supported in this browser.');
+            }
+        }
+
+        function getAsText(fileToRead) {
+            var reader = new FileReader();
+            // Handle errors load
+            reader.onload = loadHandler;
+            reader.onerror = errorHandler;
+            // Read file into memory as UTF-8      
+            reader.readAsText(fileToRead);
+        }
+
+        function loadHandler(event) {
+            var csv = event.target.result;
+            processData(csv);
+        }
+
+        function processData(csv) {
+            var allTextLines = csv.split(/\r\n|\n/);
+            console.log("Number of line: " + allTextLines[0] + allTextLines.length);
+            var i = -1;
+            var A = new Array();    //New Array
+            var prev = "", tmp = "";
+            while (allTextLines.length - 1) {
+                tmp = allTextLines.shift().split(',');
+                console.log("tmp: " + tmp + " and prev: " + prev);
+                if (tmp[0] != prev[0]) {
+                    i++;
+                    A[i] = new Array();
+                }
+                A[i].push(tmp);
+                prev = tmp;
+                console.log("Array: " + A[i] + " i: " + i);
+            }
+            // console.log(lines);
+            inputDisplay(A);
+        }
+
+        function errorHandler(evt) {
+            if (evt.target.error.name == "NotReadableError") {
+                alert("Canno't read file !");
+            }
+        }
+
+        function inputDisplay(A) {
+            //Displaying the Array and their elements
+            document.getElementById("inputDisplay").innerHTML = "Input Array: " + A + "<br>Number of Sections: " + A.length;
+            var i = 0, std = 0;
+            var table = document.createElement("table");
+            for (var s = 0; s < A.length; s++) {
+                std += A[s].length;
+                var row = table.insertRow(-1);
+                var cell = row.insertCell(-1);
+                cell.appendChild(document.createTextNode("Students of section " + A[s][0] + " = " + A[s].length));
+            }
+            var row = table.insertRow(-1);
+            var cell = row.insertCell(-1);
+            cell.appendChild(document.createTextNode("Total Number of studetns: " + std));
+            document.getElementById("inputDisplay").appendChild(table);
+        }
+
+    </script>
+
+</body>
+
+</html>
