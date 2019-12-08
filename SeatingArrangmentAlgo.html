@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <body>
     <div>
         <form class="form-horizontal well">
@@ -27,10 +26,7 @@
             <p>&copy; UET, Lahore 2019</p>
         </center>
     </footer>
-
-
     <script>
-
         class Student {      //A class of student
             constructor(rolno, sec) {
                 this.RollNo = rolno;
@@ -73,7 +69,6 @@
             var csv = event.target.result;
             processData(csv);
         }
-
 
         function processData(csv) {
             var allTextLines = csv.split(/\r\n|\n/);
@@ -179,34 +174,14 @@
                 console.log("Output Array: " + NArray + "<br>");
                 console.log("Number of sections remaining: " + count + "<br><br>");
             }//end the main while (outer) loop
-
             var table = document.createElement("table");
-
             //Displaying the results
             document.getElementById("outputDisplay").innerHTML = "Number of seats allocated: " + i + "<br>";
             // cell.appendChild(document.createTextNode("Number of seats allocated: " + i));
             console.log("Number of seats allocated: " + i + "<br>");
             if (flag == false) {
-
-                // var row = table.insertRow(-1);
-                // var cell = row.insertCell(-1);
                 console.log("Student are left = " + (std - i));
-
-                // document.write("Student are left = " + (std - i) + "<br>");
             }
-            //displaying the finishing arranging technique
-            // switch (finish) {
-            //     case 1:
-            //         document.write("Arranging the remaining seats as it is.<br>");
-            //         break;
-            //     case 2:
-            //         document.write("Arranging the remainng seats with space as a X.<br>");
-            //         break;
-            //     default:
-            //         break;
-            // }
-            //displaying the resulting array
-
             var c = 1;
             for (n = 0; n < NArray.length; n++) {
                 if ((n + 1) % 10 == 1) {
