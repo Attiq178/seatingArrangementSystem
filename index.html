@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+    }
+</style>
+
+<body>
+    <div>
+        <form class="form-horizontal well">
+            <legend>
+                <h3>
+                    <div id="title">Seating Arragement System</div>
+                </h3>
+            </legend>
+            <fieldset>
+                <label for="csvFileInput"> <strong>CSV File:</strong>
+                </label>
+                <input type="file" id="csvFileInput" onchange="handleFiles(this.files)" accept=".csv">
+            </fieldset>
+        </form>
+    </div>
+    <div id="inputDisplay">
+    </div>
+    <div id="outputDisplay">
+    </div>
+    <div id="outputButton">
+        <br>
+        <button id="generate" onclick="generateList()" >Generate List</button><br><br>
+        <button onclick="roomWise()" >View List</button>
+        <button id = "button" onclick="exportTableToCSV('csvFile.csv')">Download</button>
+        <table id="outputTable">
+        </table>
+    </div>
+    <br>
+    <br>
+    <footer>
+        <center>
+            <p>&copy; UET, Lahore 2019</p>
+        </center>
+    </footer>
+
+
+    <script type="text/javascript" src="SeatingArrangementAlgo.js"></script>
+
+</body>
+
+</html>
