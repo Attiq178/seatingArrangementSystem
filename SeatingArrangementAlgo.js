@@ -287,3 +287,14 @@ function downloadCSV(csv, filename) {
     downloadLink.click();
 }
 //downloading file ends-------------------------------------------------------------------------------
+
+//print---------------------------------------------------
+function print() {
+    var printme = document.getElementById('outputTable');
+    var win = window.open("", "", "width=1000, height=500");
+    win.document.write(printme.outerHTML);
+    win.document.close();
+    win.focus();
+    win.print();
+    win.close();
+}
