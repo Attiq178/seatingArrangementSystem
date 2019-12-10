@@ -1,49 +1,65 @@
 <!DOCTYPE html>
-<html>
-<style>
-    table,
-    th,
-    td {
-        border: 1px solid black;
-    }
-</style>
+<html lang="en">
+
+<head>
+    <title>Seating Arrangement System</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
 
 <body>
-    <div>
-        <form class="form-horizontal well">
-            <legend>
-                <h3>
-                    <div id="title">Seating Arragement System</div>
-                </h3>
-            </legend>
-            <fieldset>
-                <label for="csvFileInput"> <strong>CSV File:</strong>
-                </label>
-                <input type="file" id="csvFileInput" onchange="handleFiles(this.files)" accept=".csv">
-            </fieldset>
-        </form>
+    <div class="header">
+        <div class="container">
+            <div class="header_left">
+                <a href="index.html">
+                    <h2 title="Seating Arrangement System">Seating Arrangement System</h2>
+                </a>
+            </div>
+        </div>
     </div>
-    <div id="inputDisplay">
-    </div>
-    <div id="outputDisplay">
-    </div>
-    <div id="outputButton">
-        <br>
-        <button id="generate" onclick="generateList()" >Generate List</button><br><br>
-        <button onclick="roomWise()" >View List</button>
-        <button id = "button" onclick="exportTableToCSV('csvFile.csv')">Download</button>
-        <button id="print" onclick="print()"> Print</button>
-        <table id="outputTable">
-        </table>
-    </div>
-    <br>
-    <br>
-    <footer>
-        <center>
-            <p>&copy; UET, Lahore 2019</p>
-        </center>
-    </footer>
 
+    <div class="add_section">
+        <div class="container">
+            <form class="form-horizontal well">
+                <h4>Input Data Section: </h4>
+                <fieldset style="padding: 18px; border: 1.5px solid green;">
+                    <label for="csvFileInput"> <strong>CSV File:</strong>
+                    </label>
+                    <input type="file" id="csvFileInput" onchange="handleFiles(this.files)" accept=".csv">
+                    <p style="font-size: 13px; margin: 1% 0 -1% 0; color: red;"><b>Note: </b>Choose a .csv file only!</p>
+                    <p style="font-size: 13px; margin: 1% 0 -1% 0; color: red;">Registration No. | Sections - with first and second column respectively. </p>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <div class="generate_section" id="outputButton" style="font-size: 12px;">
+        <hr>
+        <div class="container">
+            <div id="inputDisplay">
+            </div>
+            <div id="outputDisplay">
+            </div>
+            <div id="btn">
+                <br>
+                <button style="padding: 7px 30px; width: 15%;" id="generate" onclick="generateList()">Generate List</button><br><br>
+                <button id="View" onclick="roomWise()">View Room-Wise</button>
+                <button id="View" onclick="sectionWise()">View Section-Wise</button>
+                <button id="download" onclick="exportTableToCSV('csvFile.csv')"> Download</button>
+                <button id="print" onclick="print()"> Print</button>
+                <table id="outputTable">
+                </table>
+            </div> <br> <br>
+        </div>
+    </div>
+
+    <div class="footer" id="foot">
+        <div class="container">
+            <div class="footer_left">
+                <span id="p1">Analysis of Algorithms Project</span>
+                <span">Computer Science Dept, UET Lahore</span>
+            </div>
+        </div>
+    </div>
 
     <script type="text/javascript" src="SeatingArrangementAlgo.js"></script>
 
